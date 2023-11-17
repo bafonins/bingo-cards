@@ -17,9 +17,17 @@ dependencies:
   svelte:
     specifier: ^5.0.0-next.1
     version: 5.0.0-next.4
+  textfit:
+    specifier: ^2.4.0
+    version: 2.4.0
   typescript:
     specifier: ^5.2.2
     version: 5.2.2
+
+devDependencies:
+  '@types/textfit':
+    specifier: ^2.4.4
+    version: 2.4.4
 
 packages:
 
@@ -930,6 +938,12 @@ packages:
       '@types/unist': 3.0.2
     dev: false
 
+  /@types/jquery@3.5.27:
+    resolution: {integrity: sha512-TR28Y8ezIGgfyA02UOh9x+Fy16/1qWYAnvtRd2gTBJuccX/vmddyti0MezLkTv7f+OLofVc2T961VPyKv1tXJQ==}
+    dependencies:
+      '@types/sizzle': 2.3.6
+    dev: true
+
   /@types/mdast@3.0.15:
     resolution: {integrity: sha512-LnwD+mUEfxWMa1QpDraczIn6k0Ee3SMicuYSSzS6ZYl2gKS09EClnJYGd8Du6rfc5r/GZEk5o1mRb8TaTj03sQ==}
     dependencies:
@@ -955,6 +969,16 @@ packages:
   /@types/parse5@6.0.3:
     resolution: {integrity: sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==}
     dev: false
+
+  /@types/sizzle@2.3.6:
+    resolution: {integrity: sha512-m04Om5Gz6kbjUwAQ7XJJQ30OdEFsSmAVsvn4NYwcTRyMVpKKa1aPuESw1n2CxS5fYkOQv3nHgDKeNa8e76fUkw==}
+    dev: true
+
+  /@types/textfit@2.4.4:
+    resolution: {integrity: sha512-AYlNcJ5j/WspQfbHIhoF0Wo63F5+REnX/VPFSH5unUUuwRcr6IoXxZki3vYhG4DRVUQe51AsFYyRxml5u+qaAg==}
+    dependencies:
+      '@types/jquery': 3.5.27
+    dev: true
 
   /@types/unist@2.0.10:
     resolution: {integrity: sha512-IfYcSBWE3hLpBg8+X2SEa8LVkJdJEkT2Ese2aaLs3ptGdVtABxndrMaxuFlQ1qdFf9Q5rDvDpxI3WwgvKFAsQA==}
@@ -3604,6 +3628,10 @@ packages:
       streamx: 2.15.5
     dev: false
     optional: true
+
+  /textfit@2.4.0:
+    resolution: {integrity: sha512-/x4aoY5+/tJmu+iwpBH1yw75TFp86M6X15SvaaY/Eep7YySQYtqdOifEtfvVyMwzl7SZ+G4RQw00FD9g5R6i1Q==}
+    dev: false
 
   /to-fast-properties@2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
