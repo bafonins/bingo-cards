@@ -20,8 +20,8 @@ export const defaultGameStore: GameStore = {
 export const gameStore = writable<GameStore>(defaultGameStore);
 
 export const matchStore = derived(
-  gameStore,
-  ($gameStore) => ({
+  [gameStore],
+  ([$gameStore]) => ({
     matchCount: $gameStore.matches
       .reduce((sum, matched) => matched ? sum + 1 : sum, 0),
     totalCount: $gameStore.options.length,
