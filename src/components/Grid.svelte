@@ -1,5 +1,6 @@
 <script lang="ts">
   import textFit from "textfit";
+  import MatchCounter from "./MatchCounter.svelte";
   import { onMount } from "svelte";
   import { gameStore } from "../store";
 
@@ -23,22 +24,43 @@
 </script>
 
 <svelte:window on:resize={handleTextFit} />
-<h2 class="title">{$gameStore.title} bingo</h2>
-<div class="grid">
-  {#each $gameStore.options as option, optionKey}
-    <button
-      data-selected={$gameStore.matches[optionKey]}
-      class="grid__cell"
-      on:click={() => handleCellClick(optionKey)}
-    >
-      {option}
-    </button>
-  {/each}
+<div class="layout">
+  <div class="header">
+    <h1 class="header__title">{$gameStore.title}</h1>
+    <MatchCounter />
+  </div>
+  <div
+    class="grid"
+    class:grid--3x3={$gameStore.size === 3}
+    class:grid--4x4={$gameStore.size === 4}
+    class:grid--5x5={$gameStore.size === 5}
+    class:grid--6x6={$gameStore.size === 6}
+  >
+    {#each $gameStore.options as option, optionKey}
+      <button
+        data-selected={$gameStore.matches[optionKey]}
+        class="grid__cell"
+        on:click={() => handleCellClick(optionKey)}
+      >
+        {option}
+      </button>
+    {/each}
+  </div>
 </div>
 
 <style>
-  .title {
-    text-align: center;
+  .layout {
+    width: 100%;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header__title {
+    font-size: 62px;
   }
 
   .grid {
@@ -46,6 +68,26 @@
     gap: 4px;
     width: 100%;
     margin: auto;
+  }
+
+  .grid--3x3 {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .grid--4x4 {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+
+  .grid--5x5 {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+  }
+
+  .grid--6x6 {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
   }
 
   .grid__cell {

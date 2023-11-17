@@ -1,5 +1,8 @@
 import { writable, derived } from "svelte/store";
 
+const phases = ["create", "play"] as const;
+export type Phase = typeof phases[number];
+
 const sizes = [3, 4, 5, 6] as const;
 export type Size = typeof sizes[number];
 
@@ -16,6 +19,7 @@ export const defaultGameStore: GameStore = {
   options: [],
   matches: [],
 }
+export const phaseStore = writable<Phase>("create");
 
 export const gameStore = writable<GameStore>(defaultGameStore);
 
@@ -27,3 +31,13 @@ export const matchStore = derived(
     totalCount: $gameStore.options.length,
   })
 );
+
+export function createGame(size: Size, title: string, options: string[]): void {
+  gameStore.set({
+      title: title,
+      size: size,
+      options: options,
+      matches: [...Array(options.length).keys()].map(() => false),
+  });
+  phaseStore.set("play");
+}
