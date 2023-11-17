@@ -31,3 +31,13 @@ export const matchStore = derived(
     totalCount: $gameStore.options.length,
   })
 );
+
+export function createGame(size: Size, title: string, options: string[]): void {
+  gameStore.set({
+      title: title,
+      size: size,
+      options: options,
+      matches: [...Array(options.length).keys()].map(() => false),
+  });
+  phaseStore.set("play");
+}

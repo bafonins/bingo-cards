@@ -17,7 +17,9 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <slot />
+    <div class="layout">
+      <slot />
+    </div>
   </body>
 </html>
 
@@ -27,9 +29,20 @@ const { title } = Astro.props;
     --color-cell-bg-hover: #94a3b8;
     --color-cell-bg-selected: #475569;
   }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+
   body {
     padding-top: 16px;
     max-width: 120ch;
     margin: auto;
+  }
+
+  .layout {
+    margin-top: 32px;
   }
 </style>
