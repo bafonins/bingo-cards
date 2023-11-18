@@ -41,3 +41,26 @@ export function createGame(size: Size, title: string, options: string[]): void {
   });
   phaseStore.set("play");
 }
+
+export function createGameFromQuery(searchQuery: string) {
+    const params = new URLSearchParams(searchQuery);
+
+    const sizeParam = params.get("size") ?? "";
+    const size = parseInt(sizeParam);
+    const hasSize = !isNaN(size) && size >= 3 && size <= 6;
+
+    const title = (params.get("title") ?? "").trim();
+    const hasTitle = title.length > 0;
+
+    const optionsParam = params.get("options");
+    const options = (optionsParam ?? "")
+      .split("\r\n")
+      .filter(option => option.length);
+    const hasOptions = options.length > 0;
+
+    if (!hasSize || !hasTitle || !hasOptions) {
+      phaseStore.set("create");
+    } else {
+      createGame(size as Size, title, options);
+    }
+}

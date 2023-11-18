@@ -1,5 +1,11 @@
 <script lang="ts">
-  import { gameStore, createGame, type Size } from "../store";
+  import { onMount } from "svelte";
+  import {
+    gameStore,
+    createGame,
+    createGameFromQuery,
+    type Size,
+  } from "../store";
 
   const sizeOptions: { size: Size; title: string }[] = [
     { size: 3, title: "3x3" },
@@ -8,17 +14,15 @@
     { size: 6, title: "6x6" },
   ];
 
+  onMount(() => {
+    createGameFromQuery(window.location.search);
+  });
+
   let gameTitle: string = $gameStore.title;
   let gameOptions: string = $gameStore.options.join("\n").trim();
   let selectedSize: Size = $gameStore.size;
 
   $: lines = gameOptions.split("\n").length;
-
-  const handleSubmit = () => {
-    const allOptions = gameOptions.trim().split("\n");
-
-    createGame(selectedSize, gameTitle, allOptions);
-  };
 
   const handleOptionsKeyDown = (evt: KeyboardEvent) => {
     if (evt.key === "Enter" && lines >= selectedSize * selectedSize) {
@@ -28,7 +32,7 @@
 </script>
 
 <div>
-  <form class="form" on:submit|preventDefault={handleSubmit}>
+  <form class="form">
     <div class="form__title">
       <label for="title"> Enter a title </label>
       <input
@@ -43,7 +47,12 @@
     </div>
     <div class="form__size">
       <label for="size">Select grid size</label>
-      <select class="form__size__input" id="size" bind:value={selectedSize}>
+      <select
+        class="form__size__input"
+        id="size"
+        name="size"
+        bind:value={selectedSize}
+      >
         {#each sizeOptions as option}
           <option value={option.size}>{option.title}</option>
         {/each}
