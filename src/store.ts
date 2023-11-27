@@ -73,3 +73,7 @@ export function resetCardSelection() {
       options: prevStore.options,
   }));
 }
+
+export function resetGame() {
+  window.location.search = "";
+}

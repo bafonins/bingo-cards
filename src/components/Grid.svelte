@@ -2,7 +2,7 @@
   import textFit from "textfit";
   import MatchCounter from "./MatchCounter.svelte";
   import { onMount } from "svelte";
-  import { gameStore, resetCardSelection } from "../store";
+  import { gameStore, resetCardSelection, resetGame } from "../store";
 
   const handleCellClick = (optionKey: number) => {
     const matches = $gameStore.matches;
@@ -48,6 +48,7 @@
   </div>
   <div class="button-group">
     <button on:click={resetCardSelection}>Reset card</button>
+    <button on:click={resetGame}>Reset game</button>
   </div>
 </div>
 
