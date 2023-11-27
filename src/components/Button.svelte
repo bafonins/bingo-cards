@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from "svelte";
 
   export let title: string;
   export let type: "reset" | "submit";
@@ -8,14 +8,10 @@
 
   const handleClick = () => {
     dispatch("click");
-  }
+  };
 </script>
 
-<button
-  class="button"
-  type={type}
-  on:click={handleClick}
->
+<button class="button" {type} on:click={handleClick}>
   {title}
 </button>
 
