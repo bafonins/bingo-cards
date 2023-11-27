@@ -1,6 +1,7 @@
 <script lang="ts">
   import textFit from "textfit";
   import MatchCounter from "./MatchCounter.svelte";
+  import Button from "./Button.svelte";
   import { onMount } from "svelte";
   import { gameStore, resetCardSelection, resetGame } from "../store";
 
@@ -47,8 +48,20 @@
     {/each}
   </div>
   <div class="button-group">
-    <button on:click={resetCardSelection}>Reset card</button>
-    <button on:click={resetGame}>Reset game</button>
+    <div class="button-group__button">
+      <Button
+        type="reset"
+        title="Reset card"
+        on:click={resetCardSelection}
+      />
+    </div>
+    <div class="button-group__button">
+      <Button
+        type="reset"
+        title="Reset game"
+        on:click={resetGame}
+      />
+    </div>
   </div>
 </div>
 
@@ -160,11 +173,7 @@
     margin-top: 24px;
   }
 
-  .button-group button {
-    padding: 10px;
-  }
-
-  .button-group button:not(:last-of-type) {
+  .button-group__button:not(:last-of-type) {
     margin-right: 8px;
   }
 </style>
