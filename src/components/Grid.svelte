@@ -49,18 +49,10 @@
   </div>
   <div class="button-group">
     <div class="button-group__button">
-      <Button
-        type="reset"
-        title="Reset card"
-        on:click={resetCardSelection}
-      />
+      <Button type="reset" title="Reset card" on:click={resetCardSelection} />
     </div>
     <div class="button-group__button">
-      <Button
-        type="reset"
-        title="Reset game"
-        on:click={resetGame}
-      />
+      <Button type="reset" title="Reset game" on:click={resetGame} />
     </div>
   </div>
 </div>

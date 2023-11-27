@@ -1,11 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import Button from "./Button.svelte";
-  import {
-    gameStore,
-    createGameFromQuery,
-    type Size,
-  } from "../store";
+  import { gameStore, createGameFromQuery, type Size } from "../store";
 
   const sizeOptions: { size: Size; title: string }[] = [
     { size: 3, title: "3x3" },
