@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import Button from "./Button.svelte";
   import {
     gameStore,
-    createGame,
     createGameFromQuery,
     type Size,
   } from "../store";
@@ -77,7 +77,7 @@
       />
     </div>
     <div>
-      <button class="form__button" type="submit">Create</button>
+      <Button type="submit" title="Create" />
     </div>
   </form>
 </div>
@@ -87,7 +87,6 @@
     --input-label-font-size: 26px;
     --input-value-font-size: 22px;
     --input-max-width: 320px;
-    --submit-button-font-size: 26px;
 
     --textarea-bg-color: #334155;
     --textarea-line-color: #94a3b8;
@@ -162,10 +161,5 @@
     font-size: var(--input-value-font-size);
     width: 100%;
     box-sizing: inherit;
-  }
-
-  .form__button {
-    padding: 8px;
-    font-size: var(--submit-button-font-size);
   }
 </style>
