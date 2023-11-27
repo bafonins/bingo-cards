@@ -64,3 +64,12 @@ export function createGameFromQuery(searchQuery: string) {
       createGame(size as Size, title, options);
     }
 }
+
+export function resetCardSelection() {
+  gameStore.update(prevStore => ({
+      title: prevStore.title,
+      size: prevStore.size,
+      matches: [...Array(prevStore.options.length).keys()].map(() => false),
+      options: prevStore.options,
+  }));
+}
