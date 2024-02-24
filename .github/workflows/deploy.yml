@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
 
+env:
+  PUBLIC_UMAMI_SCRIPT_URL: ${{ vars.UMAMI_SCRIPT_URL }}
+  PUBLIC_UMAMI_WEBSITE_ID: ${{ vars.UMAMI_WEBSITE_ID }}
+
 permissions:
   contents: read
   pages: write
@@ -20,9 +24,6 @@ jobs:
         with:
           node-version: 18
           package-manager: pnpm@latest
-        env:
-          PUBLIC_UMAMI_SCRIPT_URL: ${{ vars.UMAMI_SCRIPT_URL }}
-          PUBLIC_UMAMI_WEBSITE_ID: ${{ vars.UMAMI_WEBSITE_ID }}
 
   deploy:
     needs: build
