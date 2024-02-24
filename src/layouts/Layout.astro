@@ -19,6 +19,16 @@ const { title } = Astro.props;
     <meta property="og:type" content="website" />
     <meta property="og:url" content={`${Astro.url.toString()}`} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {
+      import.meta.env.DEV ? null : (
+        <script
+          async
+          is:inline
+          src={import.meta.env.PUBLIC_UMAMI_SCRIPT_URL}
+          data-website-id={import.meta.env.PUBLIC_UMAMI_WEBSITE_ID}
+        />
+      )
+    }
   </head>
   <body>
     <div class="layout">
